@@ -1,24 +1,18 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Form from './components/form/form';
+import Header from './components/header/header';
+import ListPeople from './components/listaDePessoas/listPeople';
 
-function App() {
+const App = () => {
+  const [visible, setVisible] = useState(true)
+  const [dados, setDados] = useState([])
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className="App">
+      <Header setVisible={setVisible}/>
+      {visible ? <Form dados={dados} setDados={setDados}/> : <ListPeople key="" dados={dados} setDados={setDados}/>}
+    </main>
   );
 }
 
